@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//MARK: - HomeView 
 struct HomeView: View {
     @Binding var selectedTab : MainTabBar.Tab
     
