@@ -9,11 +9,12 @@ import SwiftUI
 
 struct MyInfoView: View {
     var body: some View {
-        Text("내 정보")
+        @Binding var selectedTab : MainTabBar.Tab
     }
 }
 
 /* #Preview {
-    MyInfoView()
+    StatefulPreviewWrapper(MainTabBar.Tab.myInfo) { selectedTab in
+        MyInfoView(selectedTab: selectedTab)
+    }
 }
-*/
