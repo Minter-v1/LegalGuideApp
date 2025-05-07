@@ -4,7 +4,8 @@
 //
 //  Created by 강윤서 on 5/7/25.
 //
-import SwiftUI
+
+/* import SwiftUI
 
 struct PasswordResetView: View {
     @Binding var selectedTab : MainTabBar.Tab
@@ -54,3 +55,4 @@ struct PasswordResetView: View {
         
         .navigationTitle("비밀번호 재설정")
     
+*/
