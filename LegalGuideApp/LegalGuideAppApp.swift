@@ -11,7 +11,7 @@ import SwiftUI
 struct LegalGuideAppApp: App {
     var body: some Scene {
         WindowGroup {
-            IntroView()
+            IntroView()//
         }
     }
 }
