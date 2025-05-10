@@ -31,10 +31,11 @@ struct NavTabBar: View {
                     tabButton(for: tab)
                 }
             }
-            .frame(maxWidth: .infinity, minHeight: 50)
+            .frame(minHeight: 50)
             .background(Color(red: 0.95, green: 0.96, blue: 0.98))
             .cornerRadius(8)
         }
+        
     }
 
     
