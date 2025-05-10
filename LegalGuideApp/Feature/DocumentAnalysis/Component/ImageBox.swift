@@ -24,7 +24,7 @@ struct ImageBox: View {
                 
 
             )
-            .frame(maxWidth: .infinity)
+//            .frame(maxWidth: .infinity)
             
     }
 }
