@@ -55,11 +55,13 @@ struct MyInfoView: View {
                             .font(.subheadline)
                         InputField(placeholder: "아이디", text: $id)
                         
-                        Text("비밀번호 재설정")
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding(.top, 8)
+                        NavigationLink(destination: PasswordResetView(selectedTab: $selectedTab)) {
+                            Text("비밀번호 재설정")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding(.top, 8)
+                        }
                     }
                     .padding()
                 }
@@ -90,6 +92,7 @@ struct MyInfoView: View {
                             Text("로그아웃")
                         }
                         .frame(maxWidth: .infinity)
+
                         .padding()
                         .background(Color.white)
                         .foregroundColor(.red)

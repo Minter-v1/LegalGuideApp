@@ -33,7 +33,8 @@ struct CustomDropdown: View {
                         .foregroundColor(.gray)
                 }
                 .padding(.horizontal)
-                .frame(maxWidth: .infinity) // TODO : 높이 조정
+                .frame(maxWidth: .infinity)
+                .frame(height: 45)
                 .background(Color.white)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
