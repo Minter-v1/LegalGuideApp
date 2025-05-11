@@ -89,8 +89,8 @@ struct AnalysisDocumentView: View {
                         .fixedSize(
                             horizontal: false, vertical: true
                         )
-
-                       
+                    
+                    
                     //쉬운설명
                     Text(easyDescription)
                         .font(.custom("Inter", size: 12))
@@ -124,56 +124,62 @@ struct AnalysisDocumentView: View {
     
     
     var body: some View {
-        VStack{}.padding(.bottom, 23)
-        //MARK: - 헤더
-        HeaderView(pageName: "법률 분석 결과") { AnalysisView() }
-        //MARK: - 메인뷰
-        VStack(alignment: .center, spacing: 0) {
         
-            
-            //MARK: - (text)안내 문구
-            Text("계약서 내용 중 한국 노동법 기준으로 주의가 필요한 부분을 안내해 드립니다.")
-                .font(.custom("Inter",size: 12))
-                .foregroundColor(Color(red: 0.39, green: 0.45, blue: 0.55))
-                .padding(.top, 20)
-                .padding(.bottom, 32)
-            
-            //MARK: - (text) 주의 텍스트 박스
-            warningBoxView(
-                title: "주의가 필요한 내용",
-                message: "계약서에 퇴직금 지급 조건이 명시되어 있으나, 한국 노동법에 따르면 1년 이상 근무한 모든 근로자에게 퇴직금을 지급해야 합니다."
-            )
-            .padding(.bottom, 37)
-            
-            
-            //MARK: - (text) 법률 정보 설명 박스
-            descriptionBoxView(title: "관련 법률 정보",
-                               subtitle: "근로기준법 제 34조 (퇴직급여제도)",
-                               description: "사용자는 퇴직하는 근로자에게 급여를 지급하기 위하여 퇴직 급여제도를 설정하여야 합니다.",
-                               easyDescription: "쉬운 설명: 회사는 1년 이상 일한 직원이 퇴사할 때 퇴직금을 주어야 합니다."
-            ) { DetailInfomation() }
-            .padding(.bottom, 25)
-            
-            //MARK: - (text) 추가 확인 사항 박스
-            descriptionBoxView(title: "추가 확인 사항",
-                               subtitle: "근로시간 및 휴게시간",
-                               description: "계약서에 명시된 근로시간이 주 40시간, 일 8시간입니다.\n한국 노동법에 따르면 1일 8시간, 1주 40시간을 초과하는\n근로에 대해서는 연장근로수당을 지급해야 합니다.",
-                               easyDescription: "쉬운 설명: 하루 8시간, 일주일 40시간 이상 일하면 추가 수당을 받아야합니다."
-            ) { DetailInfomation() }
+        VStack {
+            //MARK: - 헤더
+            HeaderView(pageName: "법률 분석 결과") { AnalysisView() }
+            //MARK: - 메인뷰
+            VStack(alignment: .center, spacing: 0) {
                 
-            
-            Text(
-                "본 분석은 법률 제공 목적으로만 사용되며, 법적 조언이 아닙니다.\n정확한 법률 상담은 변호사와 상담하시기 바랍니다."
-            )
-            .font(.custom("Inter",size: 12))
-            .fixedSize(horizontal: false, vertical: true)
-            .foregroundColor(.gray)
-            .multilineTextAlignment(.center)
-            .padding(.top, 114)
-            .padding(.bottom, 24)
+                
+                //MARK: - (text)안내 문구
+                Text("계약서 내용 중 한국 노동법 기준으로 주의가 필요한 부분을 안내해 드립니다.")
+                    .font(.custom("Inter",size: 12))
+                    .foregroundColor(Color(red: 0.39, green: 0.45, blue: 0.55))
+                    .padding(.top, 20)
+                    .padding(.bottom, 32)
+                
+                //MARK: - (text) 주의 텍스트 박스
+                warningBoxView(
+                    title: "주의가 필요한 내용",
+                    message: "계약서에 퇴직금 지급 조건이 명시되어 있으나, 한국 노동법에 따르면 1년 이상 근무한 모든 근로자에게 퇴직금을 지급해야 합니다."
+                )
+                .padding(.bottom, 37)
+                
+                
+                //MARK: - (text) 법률 정보 설명 박스
+                descriptionBoxView(title: "관련 법률 정보",
+                                   subtitle: "근로기준법 제 34조 (퇴직급여제도)",
+                                   description: "사용자는 퇴직하는 근로자에게 급여를 지급하기 위하여 퇴직 급여제도를 설정하여야 합니다.",
+                                   easyDescription: "쉬운 설명: 회사는 1년 이상 일한 직원이 퇴사할 때 퇴직금을 주어야 합니다."
+                ) { DetailInfomation() }
+                    .padding(.bottom, 25)
+                
+                //MARK: - (text) 추가 확인 사항 박스
+                descriptionBoxView(title: "추가 확인 사항",
+                                   subtitle: "근로시간 및 휴게시간",
+                                   description: "계약서에 명시된 근로시간이 주 40시간, 일 8시간입니다.\n한국 노동법에 따르면 1일 8시간, 1주 40시간을 초과하는\n근로에 대해서는 연장근로수당을 지급해야 합니다.",
+                                   easyDescription: "쉬운 설명: 하루 8시간, 일주일 40시간 이상 일하면 추가 수당을 받아야합니다."
+                ) { DetailInfomation() }
+                
+                Spacer()
+                
+                //MARK: - 푸터
+                Text(
+                    "본 분석은 법률 제공 목적으로만 사용되며, 법적 조언이 아닙니다.\n정확한 법률 상담은 변호사와 상담하시기 바랍니다."
+                )
+                .font(.custom("Inter",size: 12))
+                .fixedSize(horizontal: false, vertical: true)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 24)
+                .padding(.top, 40)
+            }
+            .padding(.leading, 16)
+            .padding(.trailing, 26)
         }
-        .padding(.leading, 16)
-        .padding(.trailing, 26)
+        .navigationTitle("")
+        .navigationBarHidden(true)
     }
 }
 
