@@ -12,6 +12,7 @@ struct MoreViewBotton<Destination: View>: View {
     var text: String = "" //버튼 텍스트
     var buttonColor: Color = Color.white //white일때만 stroke 걸기
     var imageName: String = "external.link" //asset에 등록한 로고 파일명
+    var verticalPadding: CGFloat = 5
     var destination: () -> Destination
     
     
@@ -41,7 +42,7 @@ struct MoreViewBotton<Destination: View>: View {
                 
                     
             }
-            .padding(.vertical, 5)
+            .padding(.vertical, verticalPadding)
             .cornerRadius(8)
             .frame(maxWidth: .infinity)
             .overlay(
