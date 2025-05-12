@@ -45,8 +45,9 @@ struct HomeView: View {
                     NavigationLink(destination: MyDocumentView()) {
                         HomeCardView(icon: "doc.text", title: "내 기록 보기", description: "저장된 문서와 번역 기록을 확인하세요")
                     }
+                    
                     .buttonStyle(.plain)
-                    NavigationLink(destination: ScanView()) {
+                    NavigationLink(destination: ScanView(selectedTab: $selectedTab)) {
                         HomeCardView(icon: "camera", title: "OCR 찍기", description: "근로계약서를 촬영하여 번역 및 분석하세요")
                     }
                     .buttonStyle(.plain)
