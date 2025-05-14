@@ -33,7 +33,9 @@ struct DefaultButton: View {
                 : nil
             )
         }
-        .frame(minHeight: 50) // 버튼 자체의 프레임
+
+        .frame(maxWidth: .infinity, minHeight: 50) // 버튼 자체의 프레임
+
     }
 }
 
