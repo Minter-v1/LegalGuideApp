@@ -102,7 +102,7 @@ struct MyInfoView: View {
                         )
                     }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 14)
                 
                 MainTabBar(selectedTab: $selectedTab)
             }
