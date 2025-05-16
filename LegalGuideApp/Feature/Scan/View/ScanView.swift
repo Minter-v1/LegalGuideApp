@@ -35,10 +35,10 @@ struct ScanView: View {
                     
                     HStack(spacing: 16) {
                         ScanButton(title:"카메라", icon: "camera") {
-                            // 카메라 버튼 액션
+                            // TODO : 카메라
                         }
                         ScanButton(title: "업로드", icon: "square.and.arrow.up") {
-                            // 업로드 버튼 액션
+                            // TODO : 업로드
                         }
                     }
                 }
