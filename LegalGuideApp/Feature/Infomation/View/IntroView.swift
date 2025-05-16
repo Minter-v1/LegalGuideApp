@@ -35,14 +35,6 @@ struct IntroView: View {
         NavigationStack {
             //MARK: - 전체 뷰
             VStack(alignment: .center, spacing: 0) {
-                
-                NavigationLink(
-                    destination: EntryView(), //이동뷰
-                    isActive: $isActive //상태변수 참조
-                ) { EmptyView() }
-                
-                
-                
                 //MARK: - 로고 아이콘 + 어플리케이션 이름
                 HStack(alignment: .center, spacing: 0) {
                     //TODO: - 아이콘 변경
@@ -113,6 +105,10 @@ struct IntroView: View {
             .padding(.top, 57)
             .background(.white)
             //.animation(.easeIn,value: currentFrame)
+            
+            .navigationDestination(isPresented: $isActive) {
+                EntryView()
+            }
         }
         
         

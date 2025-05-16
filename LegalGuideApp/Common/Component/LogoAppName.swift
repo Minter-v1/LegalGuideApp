@@ -15,7 +15,7 @@ struct LogoAppName: View {
             
             //MARK: - 어플리케이션 로고 이미지
             //TODO: - 범용성 있게 코드 개선, 현재는 시스템 이미지만 인식
-            Image(systemName: imageName)
+            Image("Logo")
                 .resizable()
                 .frame(width: 64, height: 64)
             

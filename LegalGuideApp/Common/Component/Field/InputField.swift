@@ -26,21 +26,23 @@ struct InputField: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, 12)
                     .padding(.horizontal, 16)
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(strokeColor, lineWidth: 1)
-                    )
-                
             }
-            
             //MARK: - 입력 필드
             Group {
-                if isSecure { SecureField("", text: $text)}
-                else { TextField("", text: $text)}
-            } .foregroundColor(textColor)
-            
+                if isSecure {
+                    SecureField("", text: $text)
+                } else { TextField("", text: $text)}
+            }
+            .padding(.vertical, 12)
+            .padding(.horizontal, 16)
+            .foregroundColor(textColor)
         }
+        .background(Color.white)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(strokeColor, lineWidth: 1)
+        )
+        .cornerRadius(10)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
