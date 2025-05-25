@@ -26,6 +26,10 @@ struct ScanButton: View {
             .cornerRadius(8)
             .shadow(color: Color.black.opacity(0.05), radius: 3, x:0, y:1)
         }
+        .buttonStyle(.plain)
     }
 }
 
+#Preview {
+    ScanButton(title: "test", icon: "book", action: {} )
+}
