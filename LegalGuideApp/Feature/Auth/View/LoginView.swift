@@ -11,12 +11,22 @@ struct LoginView: View {
     @State private var id: String = ""
     @State private var password: String = ""
     @State private var isLoggedIn : Bool = false
-    @State private var navigateToHome = false
+    @State private var navigateToHome = false //로그인 관리
     @State private var navigateToSignUpInfo = false
-    @State private var selectedTab: MainTabBar.Tab = .home
+    
+    private var temptId: String = "1234"
+    private var tempPw: String = "1234"
+
     
     var body: some View {
-        NavigationStack {
+        ZStack {
+            //MARK: - 로그인 페이지 링크
+            NavigationLink(
+                destination: MainContainerView(),
+                isActive: $navigateToHome
+            ) { EmptyView() }
+        
+        
             VStack(spacing: 32) {
                 LogoAppName()
                     .padding(.bottom, 20)
@@ -34,12 +44,14 @@ struct LoginView: View {
                         Group {
                             Text("아이디")
                                 .font(.callout)
+                                .foregroundColor(.black)
                             InputField(placeholder: "아이디를 입력하세요", text: $id)
                         }
                         
                         Group {
                             Text("비밀번호")
                                 .font(.callout)
+                                .foregroundColor(.black)
                             InputField(placeholder: "비밀번호를 입력하세요", text: $password, isSecure: true)
                             
                             HStack {
@@ -55,6 +67,9 @@ struct LoginView: View {
                         }
                     }
                 }
+                
+                
+                
                 VStack(spacing: 20) {
                     HStack(spacing: 4) {
                         Text("계정이 없으신가요?")
@@ -65,7 +80,8 @@ struct LoginView: View {
                         }
                         
                         .navigationDestination(isPresented: $navigateToSignUpInfo) {
-                            SignUpInfoView()
+                            EmptyView()
+                            //SignUpInfoView()
                         }
                         .font(.footnote)
                         .foregroundColor(.blue)
@@ -73,22 +89,29 @@ struct LoginView: View {
                     .padding(.top, 20)
                     
                     DefaultButton(text: "로그인") {
-                        navigateToHome = true
+                        if (id == temptId) && (password == tempPw) {
+                            navigateToHome = true
+                        }
                     }
                 }
-                .navigationDestination(isPresented: $navigateToHome) {
-                    HomeView(selectedTab: $selectedTab)
-                }
+                
             }
             .padding(.horizontal, 14)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.white)
+        .navigationBarBackButtonHidden(true)
+        }
     }
-}
+
 
 
 
 
 #Preview {
-    LoginView()
+    
+    NavigationStack {
+        LoginView()
+    }
 }
 

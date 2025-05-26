@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct DetailInfomation: View {
+struct DetailLawInfoView: View {
+    @Environment(\.dismiss) var dismiss
+    //MARK: - 텍스트 박스 뷰 빌더
     @ViewBuilder
     private func textBox(
         title: String,
@@ -22,6 +24,7 @@ struct DetailInfomation: View {
             
             Text(description)
                 .font(.custom("Inter", size: 12).weight(.medium))
+                .foregroundColor(.black)
                 .multilineTextAlignment(.leading)
                 .fixedSize(horizontal: false, vertical: true)
                 .frame(maxWidth:.infinity)
@@ -49,7 +52,7 @@ struct DetailInfomation: View {
         VStack {
             //FIX: pageNAme은 법률명이 되어야하니 바인딩 필요할 것 같기도
             HeaderView(pageName: "법 이름") {
-                AnalysisDocumentView()
+                dismiss()
             }
             
             //MARK: - 메인 뷰
@@ -88,6 +91,7 @@ struct DetailInfomation: View {
                 .padding(.top, 18)
                 .padding(.horizontal, 20)
         }
+        .background(.white)
         .navigationTitle("")
         .navigationBarHidden(true)
     }
@@ -105,7 +109,7 @@ struct TextBoxItem: Identifiable {
 
 #Preview {
     NavigationStack {
-        DetailInfomation()
+        DetailLawInfoView()
     }
     
 }

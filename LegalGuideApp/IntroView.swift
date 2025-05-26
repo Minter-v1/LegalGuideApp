@@ -52,7 +52,6 @@ struct IntroView: View {
                 .padding(.bottom, 159)
                 
                 //MARK: 사진
-                //TODO: 사진 변경
                 Image(systemName: steps[currentFrame].imageName)
                     .resizable()
                     .frame(width: 238, height: 160)
@@ -104,6 +103,8 @@ struct IntroView: View {
             .padding(.horizontal, 30)
             .padding(.top, 57)
             .background(.white)
+            .navigationTitle("")
+            .navigationBarHidden(true)
             //.animation(.easeIn,value: currentFrame)
             
             .navigationDestination(isPresented: $isActive) {

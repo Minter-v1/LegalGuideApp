@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct AnalysisDocumentView: View {
+struct LawAnalysisView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    //MARK: - 경고 텍스트 박스 뷰 빌더
     @ViewBuilder
     private func warningBoxView(title: String, message: String) -> some View {
         //MARK: - (text) 경고 텍스트 박스
@@ -24,6 +27,8 @@ struct AnalysisDocumentView: View {
                         .weight(.semibold)
                     )
                     .foregroundColor(.red)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             //설명 텍스트
             Text(message)
@@ -48,7 +53,7 @@ struct AnalysisDocumentView: View {
         .frame(maxWidth: .infinity, alignment: .center)
     }
     
-    
+    //MARK: - 설명 텍스트 박스 뷰 빌더
     @ViewBuilder
     private func descriptionBoxView<Destination: View>(
         title: String,
@@ -70,6 +75,7 @@ struct AnalysisDocumentView: View {
                         .font(
                             .custom("Inter", size: 16).weight(.semibold)
                         )
+                        .foregroundColor(.black)
                 }
                 .padding(.bottom, 8)
                 //MARK: - (text) 법 이름
@@ -78,6 +84,7 @@ struct AnalysisDocumentView: View {
                         .custom("Inter", size: 14)
                         .weight(.medium)
                     )
+                    .foregroundColor(.black)
                     .padding(.bottom, 12)
                 //MARK: - (text) 설명
                 VStack(alignment: .leading, spacing: 13) {
@@ -86,6 +93,7 @@ struct AnalysisDocumentView: View {
                     //NOTE: - 2개의 텍스트뷰 모두 패딩 문제 있는 듯
                     Text(description)
                         .font(.custom("Inter", size: 12))
+                        .foregroundColor(.black)
                         .fixedSize(
                             horizontal: false, vertical: true
                         )
@@ -127,7 +135,7 @@ struct AnalysisDocumentView: View {
         
         VStack {
             //MARK: - 헤더
-            HeaderView(pageName: "법률 분석 결과") { AnalysisView() }
+            HeaderView(pageName: "법률 분석 결과") { dismiss() }
             //MARK: - 메인뷰
             VStack(alignment: .center, spacing: 0) {
                 
@@ -152,7 +160,7 @@ struct AnalysisDocumentView: View {
                                    subtitle: "근로기준법 제 34조 (퇴직급여제도)",
                                    description: "사용자는 퇴직하는 근로자에게 급여를 지급하기 위하여 퇴직 급여제도를 설정하여야 합니다.",
                                    easyDescription: "쉬운 설명: 회사는 1년 이상 일한 직원이 퇴사할 때 퇴직금을 주어야 합니다."
-                ) { DetailInfomation() }
+                ) { DetailLawInfoView() }
                     .padding(.bottom, 25)
                 
                 //MARK: - (text) 추가 확인 사항 박스
@@ -160,7 +168,7 @@ struct AnalysisDocumentView: View {
                                    subtitle: "근로시간 및 휴게시간",
                                    description: "계약서에 명시된 근로시간이 주 40시간, 일 8시간입니다.\n한국 노동법에 따르면 1일 8시간, 1주 40시간을 초과하는\n근로에 대해서는 연장근로수당을 지급해야 합니다.",
                                    easyDescription: "쉬운 설명: 하루 8시간, 일주일 40시간 이상 일하면 추가 수당을 받아야합니다."
-                ) { DetailInfomation() }
+                ) { DetailLawInfoView() }
                 
                 Spacer()
                 
@@ -178,6 +186,7 @@ struct AnalysisDocumentView: View {
             .padding(.leading, 16)
             .padding(.trailing, 26)
         }
+        .background(.white)
         .navigationTitle("")
         .navigationBarHidden(true)
     }
@@ -185,7 +194,7 @@ struct AnalysisDocumentView: View {
 
 #Preview {
     NavigationStack {
-        AnalysisDocumentView()
+        LawAnalysisView()
     }
    
 }

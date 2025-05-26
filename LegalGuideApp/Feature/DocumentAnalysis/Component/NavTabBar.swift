@@ -7,13 +7,34 @@
 
 import SwiftUI
 
+//MARK: - Tab enum 정의
 enum Tab: Int, CaseIterable {
     case all, analysis, original
 }
 
 struct NavTabBar: View {
-    @State private var isSelected: Tab = .all
-    
+    @Binding  var isSelected: Tab
+    //MARK: - 탭 버튼 뷰 빌더
+    @ViewBuilder
+    func tabButton(for tab: Tab) -> some View {
+        let isCurrent = isSelected == tab
+
+        Text(title(for: tab))
+            .lineLimit(nil)
+            .fixedSize(horizontal: true, vertical: false)
+            .padding(.horizontal, 32)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(isCurrent ? Color.white : Color.clear)
+            )
+            .foregroundColor(isCurrent ? .blue : .black)
+            .onTapGesture {
+                withAnimation {
+                    isSelected = tab
+                }
+            }
+    }
     
     func title(for tab: Tab) -> String {
         switch tab {
@@ -40,30 +61,12 @@ struct NavTabBar: View {
 
     
     
-    //탭 버튼
-    @ViewBuilder
-    func tabButton(for tab: Tab) -> some View {
-        let isCurrent = isSelected == tab
-
-        Text(title(for: tab))
-            .lineLimit(nil)
-            .fixedSize(horizontal: true, vertical: false)
-            .padding(.horizontal, 32)
-            .padding(.vertical, 10)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(isCurrent ? Color.white : Color.clear)
-            )
-            .foregroundColor(isCurrent ? .blue : .black)
-            .onTapGesture {
-                withAnimation {
-                    isSelected = tab
-                }
-            }
-    }
+    
 }
 
 
 #Preview {
-    NavTabBar()
+    StatefulPreviewWrapper(Tab.all) { selected in
+        NavTabBar(isSelected: selected)
+    }
 }

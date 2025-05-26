@@ -82,6 +82,8 @@ struct EntryView: View {
                 Spacer()
             }
             .background(.white)
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
     }
 }
